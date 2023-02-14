@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Zero Sum Game (In Development)</h2>
+        <h3>Your Balance</h3>
+        <h4 id="balance"></h4>
+        <h3>Your Chances</h3>
+        <div id="chances"></div>
+        <!--
+        <h4>Your Chance: <span id="chance" class="badge text-bg-primary"></span></h4>
+        <h4>Upside: <span id="upside" class="badge text-bg-primary" style="background-color: green;"></span></h4>
+        <h4>Downside: <span id="downside" class="badge text-bg-primary" style="background-color: red;"></span></h4>
+        -->
+        <br /><br />
+        <form>
+            <div class="form-group">
+                <label for="balance">Enter Amount:</label>
+                <input type="text" class="form-control" id="amount" placeholder="Enter amount in dollars">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="updateBalance()">Update</button>
+        </form>
+        <br><br>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
