@@ -1,0 +1,14 @@
+.chances {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 100%;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.chance:hover {
+    color: white !important;
+    background-color: #286090 !important;
+    cursor: pointer;
+}

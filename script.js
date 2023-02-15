@@ -4,15 +4,33 @@ class Chance {
         this._upside = upside;
         this._downside = downside;
     }
+
+    html() {
+        var p = document.createElement('p');
+        p.innerHTML = "Chance: " + this.chance + "<br>";
+        p.innerHTML += "Upside: " + this.upside + "<br>";
+        p.innerHTML += "Downside: " + this.downside;
+        return p;
+    }
     get chance() { return this._chance * 100 + "%"; }
     get upside() { return this._upside * 100 + "%"; }
     get downside() { return this._downside * 100 + "%"; }
 }
 
-function SetChanceCard(chance) {
-    document.getElementById("chance").innerHTML = chance.chance;
-    document.getElementById("upside").innerHTML = chance.upside;
-    document.getElementById("downside").innerHTML = chance.downside;
+class Choice {
+    constructor(chance) {
+        this.chance = chance;
+    }
+
+    buildHTML(index) {
+        this.div = document.createElement('div');
+        this.div.style = 'display: inline-block; width: 300px; margin: 10px; background-color: #eee;'
+        this.div.className = "chance";
+        var header = document.createElement('h4');
+        header.innerHTML = "Chance " + index;
+        this.div.appendChild(header);
+        this.div.appendChild(this.chance.html());
+    }
 }
 
 function Bet(amount, chance) {
@@ -20,7 +38,7 @@ function Bet(amount, chance) {
     if (Math.random() < chance._chance) {
         var gain = amount * (1 + chance._upside);
         balance += gain;
-        console.log("gain");//
+        console.log("gain");
     }
     else {
         var loss = amount * (1 - chance._downside);
@@ -29,23 +47,26 @@ function Bet(amount, chance) {
     }
 }
 
-chance = new Chance(0.5, 0.25, 0.3)
-//SetChanceCard(chance);
-balance = 10000;
-const div1 = document.createElement('div');
-const div2 = document.createElement('div');
-const div3 = document.createElement('div');
-const div4 = document.createElement('div');
-const divStyle = 'display: inline-block; width: 100px; height: 100px; margin: 10px; background-color: #eee;';
-div1.style = divStyle;
-div2.style = divStyle;
-div3.style = divStyle;
-div4.style = divStyle;
+
+var balance = 10000;
+var choices = [];
+
 const container = document.getElementById("chances");
-container.appendChild(div1);
-container.appendChild(div2);
-container.appendChild(div3);
-container.appendChild(div4);
+
+
+function addToContainer(choice) {
+    container.appendChild(choice.div);
+}
+
+for (i = 1; i <= 4; i++) {
+    chance = new Chance(0.5, 0.22, 0.3);
+    choice = new Choice(chance);
+    choice.buildHTML(i);
+    choices.push(choice);
+}
+
+choices.forEach(addToContainer);
+
 
 function updateBalance() {
     var amount = parseFloat(document.getElementById("amount").value);
